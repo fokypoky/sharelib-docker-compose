@@ -1,0 +1,21 @@
+version: "3"
+services:
+  sharelib-db:
+    container_name: "sharelib-db"
+    image: postgres:17.2
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - sharelib-db:/var/lib/postgresql/data
+    ports:
+      - 22100:5432
+  sharelib-session:
+    container_name: "sharelib-session"
+    image: redis:7.4.2
+  sharelib-bot:
+    container_name: "sharelib-bot"
+    image: sharelib-bot:0.0.1
+volumes:
+  sharelib-db:
+    external: true
+    name: sharelib-db-volume
