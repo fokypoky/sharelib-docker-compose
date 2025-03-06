@@ -19,3 +19,9 @@ volumes:
   sharelib-db:
     external: true
     name: sharelib-db-volume
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
